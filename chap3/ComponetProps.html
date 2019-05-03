@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Componet Props</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- v-bind:[여기에 props 이름을 적어준다] -->
+    <child-component v-bind:fromparent="message1"></child-component>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+  <script>
+    Vue.component("child-component",{
+      props:["fromparent"], // 부모에게서 받은 props를 formparent란 이름으로 받아서
+      template:"<p>{{fromparent}}</p>" // 템플릿에 넘겨준다.
+    });
+
+    new Vue({
+      el: "#app",
+      data:{
+        message1:"Hello Vue! passed from Paraent Component"
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Vue Instance Lifecycle</title>
+</head>
+
+<body>
+  <div id="app">
+    {{message}}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        message: "Hello Vue.js!"
+      },
+      beforeCreate: function() {
+        console.log("beforeCreate")
+        this.message = "여기선 안바뀌고 Vue!"
+      },
+      created: function() {
+        console.log("created");
+        this.message = "여기서부터는 바뀌고!"
+      },
+      mounted: function() {
+        console.log("mounted");
+        this.message = "안녕하세요 Vue!"
+      },
+      updated: function() {
+        console.log("updated");
+        this.message = "여기까지 바뀌고!"
+      }
+    })
+  </script>
+</body>
+
+</html>
