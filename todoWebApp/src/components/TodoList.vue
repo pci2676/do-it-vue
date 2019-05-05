@@ -4,10 +4,10 @@
       <transition-group name="list" tag="ul">
         <!--v-bind:key로 속성지정해놓으면 렌더링할때 속도 빨라짐 디비에서 인덱스와 같은느낌이라 생각
             index를 키로 지정하니 vue에서 하지말라고 경고뜸;-->
-        <li v-for="(todoItem, index) in propsdata" v-bind:key="todoItem" class="shadow">
+        <li v-for="todoMemo in propsdata" v-bind:key="todoMemo.idx" class="shadow">
           <i class="checkBtn fas fa-check" aria-hidden="true"></i>
-          {{todoItem}}
-          <span class="removeBtn" type="button" @click="removeTodo(todoItem,index)">
+          {{todoMemo.todo}}
+          <span class="removeBtn" type="button" @click="removeTodo(todoMemo.idx)">
             <i class="far fa-trash-alt" aria-hidden="true"></i>
           </span>
         </li>
@@ -29,8 +29,8 @@ export default {
   props: ['propsdata'],
 
   methods: {
-    removeTodo(todoItem, index) {
-      this.$emit('deleteOne', todoItem, index);
+    removeTodo(index) {
+      this.$emit('deleteOne', index);
     }
   }
 }
