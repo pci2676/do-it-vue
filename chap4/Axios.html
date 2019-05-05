@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Axios Sample</title>
 </head>
 
 <body>
@@ -19,10 +19,16 @@
   <script>
     var app = new Vue({
       el:'#app',
+      data:{
+        flag:'false',
+        user:'null'
+      },
       methods:{
         getData: function(){
           axios.get('http://localhost:8080/api/account/all')
           .then(function(res){
+            this.flag = !this.flag;
+            this.user = res;
             console.log(res);
           });
         }

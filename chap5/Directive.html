@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Vue Directive Sample</title>
+</head>
+
+<body>
+
+  <div id='app'>
+    <a v-if="flag">두잇 Vue.js</a>
+    <ul>
+      <li v-for="system in systems">{{system}}</li>
+    </ul>
+
+    <p v-show="flag">두잇 Vue.js</p>
+    <h5 v-bind:id="uid">뷰 입문서</h5>
+    <button v-on:click="popUpAlert">경고 버튼</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        flag: true,
+        systems: ['android', 'ios', 'web'],
+        uid: 10
+      },
+      methods: {
+        popUpAlert: function() {
+          this.flag = !this.flag;
+          return alert('팝업경고!');
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
