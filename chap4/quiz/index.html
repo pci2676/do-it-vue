@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <div id="app">
+    <router-view name="header"></router-view>
+    <router-view name="body"></router-view>
+    <router-view name="footer"></router-view>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+
+  <script>
+    var Body = {
+      template: "<div>This is Body!</div>"
+    };
+    var Header = {
+      template: "<div>This is Header!</div>"
+    };
+    var Footer = {
+      template: "<div>This is Footer!</div>"
+    };
+
+    var LoginBody = {
+      template: `
+      <div>
+      컴포넌트를 이용한 로그인 바디
+      <div>아이디 : <input type="text" /></div>
+      <div>비밀번호 : <input type="password" /></div>
+      </div>
+      `
+    };
+    var LoginHeader = {
+      template: "<div>컴포넌트를 이용한 로그인 헤더입니다.</div>"
+    };
+    var LoginFooter = {
+      template: "<div>컴포넌트를 이용한 로그인 푸터입니다.</div>"
+    };
+
+
+    var router = new VueRouter({
+      routes: [{
+          path: '/',
+          components: {
+            body: Body,
+            header: Header,
+            footer: Footer
+          }
+        },
+        {
+          path: '/login',
+          components: {
+            header: LoginHeader,
+            body: LoginBody,
+            footer: LoginFooter
+          }
+        }
+      ]
+    });
+
+    var app = new Vue({
+      router
+    }).$mount('#app');
+  </script>
+</body>
+
+</html>
