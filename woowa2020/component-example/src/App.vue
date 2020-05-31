@@ -2,13 +2,14 @@
     <div id="app">
         <!--        전역 컴포넌트는 바로 main.js에서 등록하면 바로 사용가능 하다.-->
         <global-component v-on:alertMessageByChild="alertByParent"/> <!--하위 컴포넌트에서 전달하는 이벤트="상위 컴포넌트 메서드"-->
-        <local-component :msg=this.msg/>
+        <hr>
+        <local-component :msg=this.msg v-on:changeMessage="changePropsMsg"/>
     </div>
 </template>
 
 <script>
     // 지역 컴포넌트는 사용될 컴포넌트에서 임포트를 한뒤
-    import LocalComponent from "./components/LocalComponent";
+    import LocalComponent from "@/components/LocalComponent";
 
     export default {
         name: 'App',
@@ -24,6 +25,9 @@
         methods: {
             alertByParent: function (msgFromChild) {
                 alert(msgFromChild);
+            },
+            changePropsMsg: function (changeMsg) {
+                this.msg = changeMsg;
             }
         }
     }

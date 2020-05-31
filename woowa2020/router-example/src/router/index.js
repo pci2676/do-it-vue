@@ -32,12 +32,12 @@ function configRoutes() {
                     children: [
                         {
                             path: 'favorites',
-                            name: 'Favorties',
+                            name: Favorites.name,
                             component: Favorites,
                         },
                         {
                             path: 'paths',
-                            name: 'Paths',
+                            name: Paths.name,
                             component: Paths,
                         },
                     ]
