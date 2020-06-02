@@ -1,14 +1,10 @@
 <template>
     <div class="container" id="app">
         <h1 class="text-center">TODO APP</h1>
-        <DoneItem :todoItems="todoItems"/>
-        <TodoInput
-                @addTodo="addTodo"/>
+        <DoneItem/>
+        <TodoInput/>
         <hr>
-        <TodoList
-                :todoItems="todoItems"
-                @removeItem="removeItem"
-                @toggle="toggle"/>
+        <TodoList/>
     </div>
 </template>
 
@@ -19,43 +15,8 @@
 
     export default {
         data() {
-            return {
-                todoItems: [
-                    {
-                        id: 1,
-                        text: '뷰 강의 완강하기',
-                        checked: false
-                    },
-                    {
-                        id: 2,
-                        text: '인터뷰 질문 정리하기',
-                        checked: false
-                    }
-                ]
-            }
+            return {}
         },
-        methods: {
-            addTodo: function (text) {
-                this.todoItems.push({
-                    id: Math.random(),
-                    text: text,
-                    checked: false
-                })
-            },
-            toggle: function ({id, checked}) {
-                const index = this.todoItems.findIndex(item => {
-                    return item.id === id;
-                });
-                this.todoItems[index].checked = checked;
-            },
-            removeItem: function ({id}) {
-                const index = this.todoItems.findIndex(item => {
-                    return item.id === id;
-                });
-                this.todoItems.splice(index, 1);
-            }
-        }
-        ,
         components: {
             TodoInput,
             TodoList,

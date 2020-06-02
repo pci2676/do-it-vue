@@ -1,6 +1,8 @@
 <template>
     <div>
-        <input @keyup.enter.prevent="addTodo" class="w-100 p-2" placeholder="input todo item"
+        <input @keyup.enter.prevent="addTodo"
+               class="w-100 p-2"
+               placeholder="input todo item"
                type="text"/>
     </div>
 </template>
@@ -12,7 +14,7 @@
             addTodo: function (event) {
                 const text = event.target.value;
                 event.target.value = '';
-                this.$emit('addTodo', text);
+                this.$store.dispatch('addTodo', text);
             }
         }
     }

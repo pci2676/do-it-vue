@@ -7,13 +7,10 @@
 <script>
     export default {
         name: "DoneItem",
-        props: {
-            todoItems: {
-                type: Array,
-                required: true
-            }
-        },
         computed: {
+            todoItems: function () {
+                return this.$store.state.todoItems;
+            },
             completedTodoCount: function () {
                 return this.todoItems
                     .filter(item => item.checked)

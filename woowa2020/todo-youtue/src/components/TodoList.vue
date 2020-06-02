@@ -1,8 +1,6 @@
 <template>
     <div>
         <TodoItem :key="item.id" :todo="item"
-                  @removeItem="removeItem"
-                  @toggleCheckBox="toggle"
                   v-for="item in todoItems"/>
     </div>
 </template>
@@ -12,18 +10,9 @@
 
     export default {
         name: "TodoList",
-        props: {
-            todoItems: {
-                type: Array,
-                required: true
-            }
-        },
-        methods: {
-            toggle: function (value) {
-                this.$emit('toggle', value);
-            },
-            removeItem: function (todoId) {
-                this.$emit('removeItem', todoId);
+        computed: {
+            todoItems: function () {
+                return this.$store.state.todoItems;
             }
         },
         components: {
