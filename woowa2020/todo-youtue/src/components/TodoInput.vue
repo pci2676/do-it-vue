@@ -1,6 +1,7 @@
 <template>
     <div>
         <input @keyup.enter.prevent="addTodo"
+               v-model="text"
                class="w-100 p-2"
                placeholder="input todo item"
                type="text"/>
@@ -10,11 +11,16 @@
 <script>
     export default {
         name: "TodoInput",
+        data() {
+            return {
+                text: ''
+            }
+        },
         methods: {
             addTodo: function (event) {
                 const text = event.target.value;
-                event.target.value = '';
-                this.$store.dispatch('addTodo', text);
+                this.text = '';
+                this.$store.dispatch('todo/addTodo', text);
             }
         }
     }

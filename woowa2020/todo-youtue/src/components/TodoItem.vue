@@ -24,13 +24,13 @@
         },
         methods: {
             toggle: function (event) {
-                this.$store.dispatch('toggleTodo', {
+                this.$store.dispatch('todo/toggleTodo', {
                     id: this.todo.id,
                     checked: event.target.checked
                 })
             },
             removeItem: function () {
-                this.$store.dispatch('removeTodo', {
+                this.$store.dispatch('todo/removeTodo', {
                     id: this.todo.id
                 })
             }

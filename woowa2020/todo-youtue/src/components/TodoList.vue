@@ -12,7 +12,7 @@
         name: "TodoList",
         computed: {
             todoItems: function () {
-                return this.$store.state.todoItems;
+                return this.$store.state.todo.todoItems;
             }
         },
         components: {
